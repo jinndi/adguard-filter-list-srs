@@ -28,7 +28,7 @@ jobs:
 
       - name: Commit and push updated SRS
         env:
-          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
+          GH_PAT: ${{ secrets.GH_PAT }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -38,7 +38,7 @@ jobs:
           if ! git diff --cached --quiet; then
             DATE=$(date -u +"%Y-%m-%d %H:%M UTC")
             git commit -m "Update AdGuard SRS - Updated on $DATE"
-            git remote set-url origin https://$PAT_TOKEN@github.com/${GITHUB_REPOSITORY}.git
+            git remote set-url origin https://$GH_PAT@github.com/${GITHUB_REPOSITORY}.git
             git push origin main
           else
             echo "No changes to commit"
