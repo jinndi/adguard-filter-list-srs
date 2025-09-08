@@ -18,7 +18,7 @@ jobs:
         run: |
           curl -fsSL https://sing-box.app/install.sh | sh
 
-      - name: Download AdGuard blocklist
+      - name: Download AdGuard filter.txt
         run: |
           curl -fsSL -o filter.txt https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt
 
@@ -33,7 +33,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          git add blocklist.srs
+          git add adguard-filter-list.srs
 
           if ! git diff --cached --quiet; then
             DATE=$(date -u +"%Y-%m-%d %H:%M UTC")
