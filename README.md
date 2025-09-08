@@ -1,12 +1,12 @@
-# AdGuardHome DNS Filter List for sing-box
+# AdGuard DNS filter for sing-box
 
 ## What this repository does every day at 03:00 UTC
 
- 1. Downloads the `blocklist` file from the [AdGuard filter list project](https://github.com/ppfeufer/adguard-filter-list)
+ 1. Downloads the `filter.txt` file from the https://github.com/AdguardTeam/AdGuardSDNSFilter
  2. Converts the downloaded file into the binary `srs` format, compatible with `sing-box`
- 3. Commits and updates the generated file `blocklist.srs`
+ 3. Commits and updates the generated file `adguard-filter-list.srs`
 
-## Link to `blocklist.srs`
+## Link to `adguard-filter-list.srs`
 ```
-https://github.com/jinndi/adguard-filter-list-srs/blob/main/blocklist.srs?raw=true
+https://github.com/jinndi/adguard-filter-list-srs/blob/main/adguard-filter-list.srs?raw=true
 ```

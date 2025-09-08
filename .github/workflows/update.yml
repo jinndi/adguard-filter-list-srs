@@ -20,11 +20,11 @@ jobs:
 
       - name: Download AdGuard blocklist
         run: |
-          curl -fsSL -o blocklist.txt https://github.com/ppfeufer/adguard-filter-list/blob/master/blocklist?raw=true
+          curl -fsSL -o filter.txt https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt
 
       - name: Convert to SRS
         run: |
-          sing-box rule-set convert --type adguard --output blocklist.srs blocklist.txt
+          sing-box rule-set convert --type adguard --output adguard-filter-list.srs filter.txt
 
       - name: Commit and push updated SRS
         env:
