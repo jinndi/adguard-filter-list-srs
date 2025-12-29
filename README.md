@@ -8,5 +8,5 @@
 
 ## Link to `adguard-filter-list.srs`
 ```
-http://raw.githubusercontent.com/jinndi/adguard-filter-list-srs/main/adguard-filter-list.srs
+https://github.com/jinndi/adguard-filter-list-srs/raw/main/adguard-filter-list.srs
 ```
