@@ -8,6 +8,8 @@ on:
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -42,4 +44,18 @@ jobs:
             git push origin main
           else
             echo "No changes to commit"
+            exit 0
           fi
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.run_number }}
+          name: Release ${{ github.run_number }}
+          files: |
+            adguard-filter-list.srs
+          body: |
+            Automatic file publishing
+            - adguard-filter-list.srs: Sing-box rule_set format
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
