@@ -36,7 +36,7 @@ jobs:
           files: |
             adguard-filter-list.srs
           body: |
-            Automatic file publishing: ${{ github.event.workflow_run.created_at }}
+            Automatic file publishing:
             - adguard-filter-list.srs: Sing-box rule_set format
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
