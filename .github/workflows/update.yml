@@ -1,0 +1,42 @@
+name: Update AdGuard SRS
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 3 * * *'
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: true
+
+      - name: Install sing-box
+        run: |
+          curl -fsSL https://sing-box.app/install.sh | sh
+
+      - name: Download AdGuard filter.txt
+        run: |
+          curl -fsSL -o filter.txt https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt
+
+      - name: Convert to SRS
+        run: |
+          sing-box rule-set convert --type adguard --output adguard-filter-list.srs filter.txt
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.run_number }}
+          name: Release ${{ github.run_number }}
+          files: |
+            adguard-filter-list.srs
+          body: |
+            Automatic file publishing: ${{ github.event.workflow_run.created_at }}
+            - adguard-filter-list.srs: Sing-box rule_set format
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
