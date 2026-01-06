@@ -25,6 +25,7 @@ jobs:
           curl -fsSL -o filter.txt https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt
 
       - name: Convert to SRS
+        id: convert
         run: |
           output=$(sing-box rule-set convert --type adguard --output adguard-filter-list.srs filter.txt 2>&1)
           echo "$output"
