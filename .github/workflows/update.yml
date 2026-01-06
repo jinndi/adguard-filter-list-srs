@@ -26,7 +26,10 @@ jobs:
 
       - name: Convert to SRS
         run: |
-          sing-box rule-set convert --type adguard --output adguard-filter-list.srs filter.txt
+          output=$(sing-box rule-set convert --type adguard --output adguard-filter-list.srs filter.txt 2>&1)
+          echo "$output"
+          ratio=$(echo "$output" | grep -oE '[0-9]+/[0-9]+')
+          echo "ratio=$ratio" >> "$GITHUB_OUTPUT"
 
       - name: Create Release
         uses: softprops/action-gh-release@v2
@@ -36,6 +39,7 @@ jobs:
           files: |
             adguard-filter-list.srs
           body: |
+            Parsed rules: ${{ steps.convert.outputs.ratio }}
             Automatic file publishing:
             - adguard-filter-list.srs: Sing-box rule_set format
         env:
