@@ -18,7 +18,7 @@ jobs:
 
       - name: Install sing-box
         run: |
-          curl -fsSL https://sing-box.app/install.sh | sh
+          curl -fsSL https://sing-box.app/install.sh | sh  -s -- --version 1.12.17
 
       - name: Download AdGuard filter.txt
         run: |
