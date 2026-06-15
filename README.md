@@ -6,7 +6,16 @@
  2. Converts the downloaded file into the binary `srs` format, compatible with `sing-box`
  3. Commits and updates the generated file `adguard-filter-list.srs`
 
-## Link to `adguard-filter-list.srs`
+## Links to `adguard-filter-list.srs`
+
+
+```
+https://cdn.jsdelivr.net/gh/jinndi/adguard-filter-list-srs@main/adguard-filter-list.srs
+```
+
+```
+https://github.com/jinndi/adguard-filter-list-srs/raw/main/adguard-filter-list.srs
+```
 
 ```
 https://github.com/jinndi/adguard-filter-list-srs/releases/latest/download/adguard-filter-list.srs
