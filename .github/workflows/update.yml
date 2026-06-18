@@ -3,7 +3,7 @@ name: Update AdGuard SRS
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 3 * * *'
+    - cron: '37 6 * * *'
 
 jobs:
   build-and-push:
