@@ -49,6 +49,8 @@ jobs:
             git add adguard-filter-list.srs
             git commit -m "[auto] Update AdGuard filter list $(date '+%Y-%m-%d %H:%M:%S')"
             git push
+
+            curl -sfL "https://purge.jsdelivr.net/gh/jinndi/adguard-filter-list-srs@main/adguard-filter-list.srs"
           fi
 
       - name: Create Release
